@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "parse-csv": "node index.js",
     "test": "jest"
   },
   "author": "",
