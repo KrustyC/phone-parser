@@ -1,3 +1,4 @@
+const path = require("path");
 const { parseCSV, writeToCSVFile } = require("./src/csv");
 const { parseNumber } = require("./src/parse-number");
 
@@ -7,10 +8,13 @@ const OUTPUT_FILENAME = "output.csv";
 const CSV_SEPARATOR_INPUT = ";";
 const CSV_SEPARATOR_OUTPUT = ",";
 
-parseCSV(`${__dirname}/files/${INPUT_FILENAME}`, CSV_SEPARATOR_INPUT)
+const inputFile = path.join(__dirname, "files", INPUT_FILENAME);
+const outputFile = path.join(__dirname, "files", OUTPUT_FILENAME);
+
+parseCSV(inputFile, CSV_SEPARATOR_INPUT)
   .then((rows) => {
     const newCsvData = extractAsCSV(rows);
-    writeToCSVFile(newCsvData, `${__dirname}/files/${OUTPUT_FILENAME}`);
+    writeToCSVFile(newCsvData, outputFile);
 
     console.log("All Done!");
   })
